@@ -1,0 +1,86 @@
+{% comment %}
+Urban Kobold Shopify Theme - Bold & Stylish
+{% endcomment %}
+
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo">Urban Kobold</a>
+    <nav class="nav">
+      <ul>
+        <li><a href="/collections/all">Shop All</a></li>
+        <li><a href="/collections/clothing">Clothing</a></li>
+        <li><a href="/collections/lingerie">Lingerie</a></li>
+        <li><a href="/collections/accessories">Accessories</a></li>
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Unleash Your Style – Bold, Fierce, Unapologetic</h1>
+    <a href="/collections/new" class="btn">Shop New Arrivals</a>
+  </div>
+</section>
+
+<section class="featured-collections">
+  <div class="container">
+    <h2>Shop by Style</h2>
+    <div class="grid">
+      {% for collection in collections %}
+        <div class="collection-card">
+          <a href="{{ collection.url }}">
+            <img src="{{ collection.image | img_url: 'large' }}" alt="{{ collection.title }}">
+            <h3>{{ collection.title }}</h3>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="best-sellers">
+  <div class="container">
+    <h2>Best Sellers</h2>
+    <div class="grid">
+      {% for product in collections.best-sellers.products %}
+        <div class="product-card">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
+            <h3>{{ product.title }}</h3>
+            <p class="price">{{ product.price | money }}</p>
+            <a href="{{ product.url }}" class="btn">Shop Now</a>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="customer-reviews">
+  <div class="container">
+    <h2>What Our Customers Say</h2>
+    <div class="reviews">
+      {% comment %} Add real customer reviews dynamically {% endcomment %}
+    </div>
+  </div>
+</section>
+
+<section class="instagram-feed">
+  <div class="container">
+    <h2>Shop the Look</h2>
+    <div class="feed">
+      {% comment %} Embed Instagram feed or use an app {% endcomment %}
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; {{ 'now' | date: "%Y" }} Urban Kobold. All rights reserved.</p>
+  </div>
+</footer>
